@@ -20,7 +20,7 @@ const getJestConfig = function(cliConfigParameter) {
     if (!file || !fs.existsSync(file)) {
       continue;
     }
-    const filePath = path.join(root, file);
+    const filePath = path.isAbsolute(file) ? file : path.join(root, file);
     const configFile = require(filePath);
     if (configFile) {
       return configFile;
